@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<section style="width:70%; margin:auto; ">
+<h1> User Profile</h1>
+
+	<h3>Name : [[${user.userName}]]</h3>
+	<h3>Email : [[${user.email}]]</h3>
+	<h3>Age : [[${user.userAge}]]</h3>
+	<h3>Blood Group : [[${user.userBloodGroup}]]</h3>
+	<h3>Phone : [[${user.userPhone}]]</h3>
+	<h3>Status : [[${user.status}]]</h3>
+	
+	<h3>Gender : [[${user.usergender}]]</h3>
+	<h3>Division : [[${user.userDivision}]]</h3>
+	<h3>District : [[${user.userDistrict}]]</h3>
+	<h3>Thana/Upazila : [[${user.userThana}]]</h3>
+	<h3>Union : [[${user.userUnion}]]</h3>
+
+</section>
+	
+	
+
+</body>
+</html>

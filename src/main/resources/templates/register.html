@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+      
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" 
+th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body>
+<section>
+<div class="formDesign"style="width:70%; margin:auto; " >
+<div class="card">
+  <div class="card-header text-center fs-4">
+   Register Here
+  </div>
+	
+	
+	
+
+						 	
+					 <th:block th:if="${session.msg}">
+							<p class="text-center fs-4 text-success">[[${session.msg}]]</p>
+							
+							
+							 <!--	 	<th:block th:text="${#session.removeAttribute('msg')}"></th:block> -->
+
+						
+						</th:block>
+						
+				
+	
+
+
+	<div class="card-body">
+	
+<!--  <form th:action="@{/register}" enctype="multipart/form-data" th:object="${user}" method="post" >
+
+-->
+<form action="createUser" method="post">
+
+
+	<div class="row mb-3">
+		
+		<div class="col-sm-6" >
+		<input type="text" class="form-control" id="userName" name="userName" placeholder="Enter your name "required>
+		</div>
+		<div class="col-sm-6">
+		<input type="text" class="form-control" id="userAge" name="userAge" placeholder="Enter your age" required>
+		</div>
+    </div>
+	<div class="row mb-3">
+		
+		<div class="col-sm-6" >
+		<input type="text" class="form-control" id="userPhone" name="userPhone" placeholder="Enter your phone number"required>
+		</div>
+		<div class="col-sm-6">
+            <select class="form-control" id="userBloodGroup" type="text" name="userBloodGroup" required>
+                <option value="" selected>--Choose blood group</option>
+                <option value="apositive" >A+</option>
+                <option value="anegative " >A-</option>
+                <option value="bpositive">B+</option>
+                <option value="bnegative" >B-</option>
+                <option value="opositive">O+</option>
+                <option value="onegative" >O-</option>
+                <option value="abpositive">AB+</option>
+                <option value="abnegative" >AB-</option>
+                </select>
+		
+		</div>
+    </div>
+
+	<div class="row mb-3">
+		
+		<div class="col-sm-6" >
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your  gmail" required>
+        </div>
+
+        <div class="col-sm-6" >
+            <input type="password" class="form-control" id="userPassword" name="userPassword" placeholder="Enter your  password" required>
+        </div>
+
+        </div>
+        <div class="row mb-3">
+
+            <div class="col-sm-6">
+                <label for="status" required><strong>Status:</strong></label>
+             <input type="radio" name="status" value="active"  style="margin-left:20px">Active
+             <input type="radio" name="status" value="inactive" style="margin-left:20px">Inactive
+         </div>
+
+		<div class="col-sm-6">
+		       <label for="gender"><strong>Gender:</strong></label>
+			<input type="radio" name="usergender" value="male"  style="margin-left:20px">Male
+			<input type="radio" name="usergender" value="female" style="margin-left:20px">Female
+			<input type="radio" name="usergender" value="others" style="margin-left:20px">Others
+    	</div>
+
+	</div>
+
+    <div class="row mb-3">
+		
+		<div class="col-sm-6" >
+            <label for="">Country</label>
+            <select class="form-control" name="userDivision" id="userDivision" onchange="selectDistrict(this.id,'userDistrict')">
+                <option value="">--Choose Division</option>
+                <option value="barishal">Barishal</option>
+                <option value="chittagong">Chittagong</option>
+                <option value="dhaka">Dhaka</option>
+                <option value="khulna">Khulna</option>
+                <option value="mymensingh">Mymensingh</option>
+                <option value="rajshahi">Rajshahi</option>
+                <option value="rangpur">Rangpur</option>
+                <option value="Sylhet">Sylhet</option>
+            </select>
+		</div>
+
+		<div class="col-sm-6">
+            <label for="">District</label>
+            <select class="form-control"  name="userDistrict" id="userDistrict" onchange="selectThana(this.id,'userThana')">
+    
+            </select>
+		</div>
+    </div>
+
+	<div class="row mb-3">
+		
+		<div class="col-sm-6" >
+        <label for="">Thana/Upazila</label>
+            <select class="form-control" name="userThana" id="userThana" onchange="selectUnion(this.id,'userUnion')">
+                
+            </select>
+		</div>
+		<div class="col-sm-6">
+            <label for="">Union</label>
+            <select class="form-control" name="userUnion" id="userUnion">
+                
+            </select>
+		</div>
+    </div>
+
+	<br>
+	<button class="btn btn-primary btn-lg btn-block" type="submit" style="width:25%; margin:center">Register</button>
+	<br>
+	
+		
+	</form>
+
+    <script type="text/javascript" src="function.js">
+
+    </script>
+
+	</div>
+	
+	</div>
+	</div>
+	
+	
+	
+	</section>
+	
+	
+	
+
+</body>
+</html>
