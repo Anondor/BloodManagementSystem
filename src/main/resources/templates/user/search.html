@@ -11,40 +11,14 @@
 	
 	<div class="card">
   <div class="card-header text-center fs-4">
- <h1>Search Blood Donner</h1>
+ <h1>Search Blood Donors</h1>
   </div>
-     <th:block th:if="${session.msg}">
-	<p class="text-center fs-4 text-success">[[${session.msg}]]</p>
-							
-							
-		 <!--	 	<th:block th:text="${#session.removeAttribute('msg')}"></th:block> -->
-
-						
-		</th:block>
-	
-	
-	
-
-						 	
-					 <!--		 <th:block th:if="${session.msg}">
-							<p class="text-center fs-4 text-success">[[${session.msg}]]</p>
-							
-							
-						 	<th:block th:text="${#session.removeAttribute('msg')}"></th:block> 
-
-						
-						</th:block>-->
-						
-				
-	
 
 
 	<div class="card-body">
 	
-<!--  <form th:action="@{/register}" enctype="multipart/form-data" th:object="${user}" method="post" >
 
--->
-<form action="searchProfile" method="post">
+<form action="finddonner" method="post">
 
     <div class="row g-3">
 		
@@ -52,13 +26,13 @@
             <label for="">Division</label>
             <select class="form-control" name="userDivision" id="userDivision" onchange="selectDistrict(this.id,'userDistrict')">
                 <option value="">--Choose Division</option>
-                <option value="barishal">Barishal</option>
-                <option value="chittagong">Chittagong</option>
-                <option value="dhaka">Dhaka</option>
-                <option value="khulna">Khulna</option>
-                <option value="mymensingh">Mymensingh</option>
-                <option value="rajshahi">Rajshahi</option>
-                <option value="rangpur">Rangpur</option>
+                <option value="Barishal">Barishal</option>
+                <option value="Chittagong">Chittagong</option>
+                <option value="Dhaka">Dhaka</option>
+                <option value="Khulna">Khulna</option>
+                <option value="Mymensingh">Mymensingh</option>
+                <option value="Rajshahi">Rajshahi</option>
+                <option value="Rangpur">Rangpur</option>
                 <option value="Sylhet">Sylhet</option>
             </select>
 		</div>
@@ -99,11 +73,13 @@
           </div>
    
 
-	<div class="col-sm-2" >
-		<br>
-	<button type="button" class="btn btn-dark">submit</button>
-	</div>
-	
+			<div class="col-sm-2" >
+				<br>
+			<button type="submit" class="btn btn-dark">submit</button>
+			<br>
+	<br>
+			</div>
+			
 	 </div>
 		
 	</form>
@@ -115,6 +91,15 @@
 	</div>
 	
 	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	
 
 </section>
 

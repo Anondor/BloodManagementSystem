@@ -7,21 +7,53 @@
 
             s2.innerHTML= "";
 
-            if(s1.value=="barishal")
+            if(s1.value=="Barishal")
             {
-                var optionArray=['choose|Choose District','barguna|Barguna','barishal|Barishal','bhola|Bhola','jhalokati|Jhalokati','patuakhali|Patuakhali','pirojpur|Pirojpur'];
+                var optionArray=['choose|Choose District','Barguna|Barguna','Barishal|Barishal','Bhola|Bhola','Jhalokati|Jhalokati','Patuakhali|Patuakhali','Pirojpur|Pirojpur'];
             }
-            else if(s1.value =="chittagong"){
-                var optionArray=['choose|Choose District','bandarban|Bandarban','brahmanbaria|Brahmanbaria','chandpur|Chandpur','chattogram|Chattogram','cumilla|Cumilla',
-                'coxsBazar|Cox\'s Bazar','feni|Feni','khagrachhari|Khagrachhari','lakshmipur|Lakshmipur','noakhali|Noakhali','rangamati|Rangamati'];
+            else if(s1.value =="Chittagong"){
+                var optionArray=['choose|Choose District','Bandarban|Bandarban','Brahmanbaria|Brahmanbaria','Chandpur|Chandpur','Chattogram|Chattogram','Cumilla|Cumilla',
+                'Cox Bazar|Cox Bazar','Feni|Feni','Khagrachhari|Khagrachhari','Lakshmipur|Lakshmipur','Noakhali|Noakhali','Rangamati|Rangamati'];
             }
-            else if(s1.value=='dhaka')
+            else if(s1.value=='Dhaka')
             {
-                var optionArray=['choose|Choose District','dhaka|Dhaka','faridpur|Faridpur','gazipur|Gazipur','gopalganj|Gopalganj','kishoreganj|Kishoreganj',
-                'madaripur|Madaripur','manikganj|Manikganj','munshiganj|Munshiganj','narayanganj|Narayanganj','narsingdi|Narsingdi','rajbari|Rajbari',
-                'shariatpur|Shariatpur','tangail|Tangail'];
+                var optionArray=['choose|Choose District','Dhaka|Dhaka','Faridpur|Faridpur','Gazipur|Gazipur','Gopalganj|Gopalganj','Kishoreganj|Kishoreganj',
+                'Madaripur|Madaripur','Manikganj|Manikganj','Munshiganj|Munshiganj','Narayanganj|Narayanganj','Narsingdi|Narsingdi','Rajbari|Rajbari',
+                'Shariatpur|Shariatpur','Tangail|Tangail'];
 
             }
+              else if(s1.value=='Khulna')
+            {
+                var optionArray=['choose|Choose District','Bagerhat|Bagerhat','Chuadanga|Chuadanga','Jashore|Jashore','Jhenaidah|Jhenaidah','Khulna|Khulna',
+                'Kushtia|Kushtia','Magura|Magura','Meherpur|Meherpur','Narail|Narail','Satkhira|Satkhira'];
+
+            }
+             
+             else if(s1.value=='Mymensingh')
+            {
+                var optionArray=['choose|Choose District','Jamalpur|Jamalpur','Mymensingh|Mymensingh','Netrokona|Netrokona','Sherpur|Sherpur'];
+            }
+            
+             else if(s1.value=='Rajshahi')
+            {
+		
+                var optionArray=['choose|Choose District','Bogura|Bogura','Joypurhat|Joypurhat','Naogaon|Naogaon','Natore|Natore','Chapai Nawabganj|Chapai Nawabganj',
+                'Pabna|Pabna','Rajshahi|Rajshahi','Sirajganj|Sirajganj'];
+
+            }
+             else if(s1.value=='Rangpur')
+            {
+		
+                var optionArray=['choose|Choose District','Dinajpur|Dinajpur','Gaibandha|Gaibandha','Kurigram|Kurigram','Lalmonirhat|Lalmonirhat','Nilphamari|Nilphamari',
+                'Panchagarh|Panchagarh','Rangpur|Rangpur','Thakurgaon|Thakurgaon'];
+
+            }
+             else if(s1.value=='Sylhet')
+            {
+                var optionArray=['choose|Choose District','Habiganj|Habiganj','Moulvibazar|Moulvibazar','Sunamganj|Sunamganj','Sylhet|Sylhet'];
+
+            }
+            
 
             for(var option in optionArray)
             {
@@ -46,15 +78,15 @@
  
 
             
-            if(s1.value=="dhaka")
+            if(s1.value=="Dhaka")
             {
-                var optionArray=['choose|Choose Thana/Upozila','adabarThana|Adabar Thana','baddaThana|Badda Thana ','bangshalThana|Bangshal Thana','bhashantekThana|Bhashantek Thana ','bhataraThana|Bhatara Thana',
-                'bimanBandarThana|Biman Bandar Thana ','cantonmentThana|Cantonment Thana ','chalkbazarThana|Chalkbazar Thana ','dakhinkhanThana|Dakhinkhan Thana ','darusSalamThana|Darus Salam Thana','DemraThana|Demra Thana ',
-                'dhamraiUpazila|Dhamrai Upazila','dhanmondiThana|Dhanmondi Thana','doharUpazila |Dohar Upazila ',
-                'gendariaThana|Gendaria Thana','gulshanThana|Gulshan Thana ',
-                'hazaribagh Thana|Hazaribagh Thana','jatrabariThana|Jatrabari Thana ',
-                'kadamtoliThana|Kadamtoli Thana','kafrulThana|Kafrul Thana',
-                'savarUpazila|Savar Upazila'];
+                var optionArray=['choose|Choose Thana/Upozila','Adabar Thana|Adabar Thana','Badda Thana|Badda Thana ','Bangshal Thana|Bangshal Thana','bhashantekThana|Bhashantek Thana ','Bhatara Thana|Bhatara Thana',
+                'Biman Bandar Thana|Biman Bandar Thana ','Cantonment Thana|Cantonment Thana ','Chalkbazar Thana|Chalkbazar Thana ','Dakhinkhan Thana|Dakhinkhan Thana ','Darus Salam Thana|Darus Salam Thana','Demra Thana|Demra Thana ',
+                'Dhamrai Upazila|Dhamrai Upazila','Dhanmondi Thana|Dhanmondi Thana','Dohar Upazila |Dohar Upazila ',
+                'Gendaria Thana|Gendaria Thana','Gulshan Thana|Gulshan Thana ',
+                'Hazaribagh Thana|Hazaribagh Thana','JatrabariThana|Jatrabari Thana ',
+                'Kadamtoli Thana|Kadamtoli Thana','Kafrul Thana|Kafrul Thana',
+                'Savar Upazila|Savar Upazila'];
             }
             else if(s1.value =="b"){
                 var optionArray=['xx|XX','yy|YY','zz|ZZ'];
@@ -81,18 +113,17 @@
 
             s2.innerHTML= "";
             
-            if(s1.value=="savarUpazila")
+            if(s1.value=="Savar Upazila")
             {
-                var optionArray=['choose|Choose Union','aminbazar|Aminbazar','ashulia|Ashulia ','birulia|Birulia','bongaon|Bongaon ','dhamsona|Dhamsona',
-                'kaundia|Kaundia ','pathalia|Pathalia ','savar|Savar ','shimulia|Shimulia','tetuljhora|Tetuljhora','vakurta|Vakurta',
-                'yearpur|Yearpur'];
+                var optionArray=['choose|Choose Union','Aminbazar|Aminbazar','Ashulia|Ashulia ','Birulia|Birulia','Bongaon|Bongaon ','Dhamsona|Dhamsona',
+                'Kaundia|Kaundia ','Pathalia|Pathalia ','Savar|Savar ','Shimulia|Shimulia','Tetuljhora|Tetuljhora','Vakurta|Vakurta',
+                'Yearpur|Yearpur'];
             }
-            else if(s1.value =="b")
-            {
-                var optionArray=['xx|XX','yy|YY','zz|ZZ'];
-            }
-            else if(s1.value =="c"){
-                var optionArray=['ppp|PPP','qqq|QQQ','rrr|RRR'];
+         
+            else if(s1.value =="Dhamrai Upazila"){
+                 var optionArray=['choose|Choose Union','Amta|Amta','Baisakanda|Baisakanda ','Balia|Balia','Bhararia|Bhararia ','Chauhati|Chauhati',
+                'Dhamrai|Dhamrai','Gangutia|Gangutia ','Jadabpur|Jadabpur ','Kulla|Kulla','Kushura|Kushura','Nannar|Nannar',
+                'Rowail|Rowail','Sanora|Sanora ','Sombhag|Sombhag ','Suapur|Suapur','Sutipara|Sutipara'];
             }
 
             for(var option in optionArray)

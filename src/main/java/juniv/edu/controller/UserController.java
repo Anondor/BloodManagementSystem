@@ -1,6 +1,7 @@
 package juniv.edu.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,11 +12,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import juniv.edu.model.UserDtls;
 import juniv.edu.repository.UserRepository;
+import juniv.edu.service.UsererviceImpl;
 
 @Controller
 @RequestMapping("/user/")
@@ -23,6 +26,8 @@ import juniv.edu.repository.UserRepository;
 public class UserController {
 	@Autowired
 	private UserRepository userRepo;
+	@Autowired
+	private UsererviceImpl service;
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncode;
@@ -31,11 +36,10 @@ public class UserController {
 	private void userDetails(Model m, Principal p) {
 		String email = p.getName();
 		UserDtls user = userRepo.findByEmail(email);
-
 		m.addAttribute("user", user);
 
 	}
-	
+	public String division="choose",district="choose",thana="choose",union="choose",userBloodGroup="choose",status=null;
 	@GetMapping("/")
 	public String home()
 	{
@@ -58,26 +62,9 @@ public class UserController {
 	{
 		return "user/update_profile";
 	}
+
 	@PostMapping("/editProfile")
 	
-/*	public String updateProfile(Principal p,@RequestParam("userPhone") String userPhone,
-			@RequestParam("status") String status,@RequestParam("userDistrict") String userDistrict,HttpSession session)
-	{
-		String email=p.getName();
-		UserDtls loginUser= userRepo.findByEmail(email);
-		if(userPhone!="")loginUser.setUserPhone(userPhone);
-		loginUser.setStatus(status);
-		userRepo.save(loginUser);
-		session.setAttribute("msg", "Update Sucess");
-		
-		System.out.println(userDistrict);
-		
-		
-		
-		return "redirect:/user/updateProfile";
-	}
-	
-	*/
 	public String updateProfile(HttpServletRequest request,Principal p, HttpSession session)
 	{
 		String email=p.getName();
@@ -95,9 +82,6 @@ public class UserController {
 		String division=request.getParameter("userDivision");
 		if(division!="")
 		loginUser.setUserDivision(division);
-		
-		
-		
 		String district=request.getParameter("userDistrict");
 		if(district!=null)
 		loginUser.setUserDistrict(district);
@@ -113,13 +97,64 @@ public class UserController {
 		
 		userRepo.save(loginUser);
 		session.setAttribute("msg", "Update Sucess");
-		
 		return "redirect:/user/updateProfile";
 	}
+	@GetMapping("/donner")
+	public ModelAndView getBloodDonner()
+	{
+		status="active";
+		String choose="choose";
+		int unioncheck=1,thanacheck=1,districtcheck=1,divisioncheck=1;
+		if(union==null||union.equals(choose))unioncheck=0;
+		if(thana==null||thana.equals(choose))thanacheck=0;
+		if(district==null||district.equals(choose))districtcheck=0;
+		if(division==""||division.length()==0||division==null||division.equals(choose))divisioncheck=0;
+		
+	
+		if(unioncheck==1) {
+			List<UserDtls>list= service.findByUserUnionAndUserBloodGroupAndStatus(union,userBloodGroup,status);
+			return new ModelAndView("user/blood_donner","user_dtls",list);
+		}
+		else if(thanacheck==1)
+		{
+
+			
+			List<UserDtls>list= service.findByUserThanaAndUserBloodGroupAndStatus(thana,userBloodGroup,status);
+			return new ModelAndView("user/blood_donner","user_dtls",list);
+		}
+		else if(districtcheck==1)
+		{
+			List<UserDtls>list= service.findByUserDistrictAndUserBloodGroupAndStatus(district,userBloodGroup,status);
+			return new ModelAndView("user/blood_donner","user_dtls",list);
+		}
+		else if(divisioncheck==1)
+		{
+			List<UserDtls>list= service.findByUserDivisionAndUserBloodGroupAndStatus(division,userBloodGroup,status);
+			return new ModelAndView("user/blood_donner","user_dtls",list);
+		}
+		else
+		{
+			List<UserDtls>list= service.findByStatus(status);
+			return new ModelAndView("user/blood_donner","user_dtls",list);
+			
+		}
+		
+	}
+	
+	@PostMapping("/finddonner")
+	public String bloodDonner(HttpServletRequest request,Principal p)
+	{
+		 division=request.getParameter("userDivision");
+		 district=request.getParameter("userDistrict");
+		 thana=request.getParameter("userThana");
+		 union=request.getParameter("userUnion");
+		 userBloodGroup=request.getParameter("userBloodGroup");
+		
+		return "redirect:/user/donner";
+	}
+	
 	
 	@PostMapping("/updatePassword")
-	
-	
 	
 	public String changePassword(Principal p,@RequestParam("oldPass") String oldPass,
 				@RequestParam("newPass") String newPass,HttpSession session)
