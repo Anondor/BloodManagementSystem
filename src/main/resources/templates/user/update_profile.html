@@ -7,16 +7,17 @@
 </head>
 <body>
 <section>
-<div class="formDesign"style="width:70%; margin:auto; " >
+<div class="formDesign"style="width:95%; margin:auto; " >
 <div class="card">
   <div class="card-header text-center fs-4">
    Update Here
   </div>
-     <th:block th:if="${session.msg}">
+  <!--   
+   <th:block th:if="${session.msg}">
 	<p class="text-center fs-4 text-success">[[${session.msg}]]</p>
 							
 							
-		 <!--	 	<th:block th:text="${#session.removeAttribute('msg')}"></th:block> -->
+			 	<th:block th:text="${#session.removeAttribute('msg')}"></th:block> -->
 
 						
 		</th:block>
@@ -112,7 +113,7 @@
     </div>
 
 	<br>
-	<button class="btn btn-primary btn-lg btn-block" type="submit" style="width:25%; margin:center">Update</button>
+	<button class="btn btn-lg btn-block text-white col-md-2 " style="background:#333356"  >Update</button>
 	<br>
 	
 		

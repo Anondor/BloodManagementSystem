@@ -64,13 +64,13 @@ public class HomeController {
 	
 	
 	@PostMapping("/createUser")
-	public String createUser(@ModelAttribute UserDtls user, HttpSession session) {
+	public String createUser(@ModelAttribute UserDtls user) {
 
 		boolean f = userService.checkEmail(user.getEmail());
 		int ok=0;
 		
 		if (f) {
-			session.setAttribute("msg", "Email Id alreday exists");
+			// session.setAttribute("msg", "Email Id alreday exists");
 			ok=1;
 			
 		}
@@ -79,11 +79,12 @@ public class HomeController {
 			UserDtls userDtls = userService.createUser(user);
 			
 
-			if (userDtls != null) {
+			/*if (userDtls != null) {
 				session.setAttribute("msg", "Register Sucessfully");
 			} else {
 				session.setAttribute("msg", "Something wrong on server");
-			}
+			}*/
+			
 		}
 		if(ok==1)
 		{
@@ -116,7 +117,7 @@ public class HomeController {
 	
 	@PostMapping("/forgetPassword")
 	
-	public String forgetPassword(@RequestParam String email, @RequestParam String mobileNum,HttpSession session)
+	public String forgetPassword(@RequestParam String email, @RequestParam String mobileNum)
 	{
 		UserDtls user=userRepo.findByEmailAndUserPhone(email,mobileNum);
 		
@@ -126,7 +127,7 @@ public class HomeController {
 		}
 		else
 		{ 
-			session.setAttribute("msg", "Invalid email or mobile number");
+		//	session.setAttribute("msg", "Invalid email or mobile number");
 			
 			return "forget_password";
 		}

@@ -10,18 +10,26 @@ th:replace="base::layout(~{::section})">
 </head>
 <body>
 <section>
-<div class="formDesign"style="width:70%; margin:auto; " >
+<br>
+<br>
+<div class="formDesign"style="width:95%; margin:auto; " >
 <div class="card">
   <div class="card-header text-center fs-4">
    Register Here
   </div>
-		<!--  <th:block th:if="${session.msg}">
+  
+ 
+				<!--  
+				<th:block th:if="${session.msg}">
 				<p class="text-center fs-4 text-success">[[${session.msg}]]</p>
-							
-					 	 	<th:block th:text="${#session.removeAttribute('msg')}"></th:block> 
-
-			</th:block>
-		--> 				
+				<th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+				
+				
+				  
+				
+			</th:block>	
+			-->
+						
 
 	<div class="card-body">
 	
@@ -46,14 +54,14 @@ th:replace="base::layout(~{::section})">
 		<div class="col-sm-6">
             <select class="form-control" id="userBloodGroup" type="text" name="userBloodGroup" required>
                 <option value="" selected>--Choose blood group</option>
-                <option value="apositive" >A+</option>
-                <option value="anegative " >A-</option>
-                <option value="bpositive">B+</option>
-                <option value="bnegative" >B-</option>
-                <option value="opositive">O+</option>
-                <option value="onegative" >O-</option>
-                <option value="abpositive">AB+</option>
-                <option value="abnegative" >AB-</option>
+                <option value="A positive" >A+</option>
+                <option value="A negative " >A-</option>
+                <option value="B positive">B+</option>
+                <option value="B negative" >B-</option>
+                <option value="O positive">O+</option>
+                <option value="O negative" >O-</option>
+                <option value="AB positive">AB+</option>
+                <option value="AB negative" >AB-</option>
                 </select>
 		
 		</div>
@@ -90,7 +98,7 @@ th:replace="base::layout(~{::section})">
     <div class="row mb-3">
 		
 		<div class="col-sm-6" >
-            <label for="">Country</label>
+            <label for="">Division</label>
             <select class="form-control" name="userDivision" id="userDivision" onchange="selectDistrict(this.id,'userDistrict')">
                 <option value="">--Choose Division</option>
                 <option value="Barishal">Barishal</option>

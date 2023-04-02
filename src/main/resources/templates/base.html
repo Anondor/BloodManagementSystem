@@ -10,7 +10,7 @@ integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLAS
 crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 </head>
-<body>
+<body  style="font-family: 'Times New Roman', serif; background-color: #C0C0C0;">
 
 <nav class="navbar navbar-expand-lg navbar-dark fs-4" style="background:#333356">
 
@@ -66,6 +66,7 @@ crossorigin="anonymous">
            [[${user.userName}]]
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="profile">View Profile</a></li>
             <li><a class="dropdown-item" href="updateProfile">Edit Profile</a></li>
             <li><a class="dropdown-item" href="changePassword">Change Password</a></li>
             <li><hr class="dropdown-divider"></li>
@@ -81,14 +82,23 @@ crossorigin="anonymous">
     </div>
   </div>
 </nav>
+<ol style="width:75%; margin:auto; background-color: white;">
 
+<div >
 
-<div th:replace="${content}">
+<div th:replace="${content}" >
+
+</div>
+
 
 </div>
 <br>
 <br>
-
+<br>
+<br>
+<br>
+<br>
+</ol>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -101,11 +111,15 @@ crossorigin="anonymous">
 <div class="container text-center text-md-left">
 <div class="row text-center text-md-left">
 <div class="col-md-6 col-lg-6 col-xl-6 mx-auto  ">
-<h5 class="text-uppercase mb-4 font-weight-bold text-warning">Company name</h5>
+<h5 class="text-uppercase mb-4 font-weight-bold text-warning"> Company's Motive </h5>
 
 <p>
-Communicating with existing donors, potential new donors and other stakeholders is critically important in this time of crisis. GBF is working with blood services across Africa to produce tailored COVID-19-related materials (to include local branding and contact details; translated if required). The artwork is donated free-of-charge and support for local production may be available.
+Communicating with existing donors,
+ potential new donors and other stakeholders is critically important in this time of crisis. 
+ <strong>Blood Management System </strong> is working with blood services across 
+ <strong>Bangladesh</strong> to produce necessary information in a specific area.
 </p>
+
 </div>
 
 <div class="col-md-5 col-lg-5 col-xl-5 mx-auto  ">
