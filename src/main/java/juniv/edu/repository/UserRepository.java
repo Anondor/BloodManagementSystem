@@ -15,6 +15,8 @@ public interface UserRepository extends JpaRepository<UserDtls, Integer> {
 	public UserDtls findByEmail(String email);
 	
 	public UserDtls findByEmailAndUserPhone(String email, String mobno);
+	public UserDtls findByVerificationCode(String code);
+	
 
 	public List<UserDtls>findByUserUnionAndUserBloodGroupAndStatus(String union,String userBloodGroup,String status);
 	public List<UserDtls>findByUserThanaAndUserBloodGroupAndStatus(String thana,String userBloodGroup,String status);
@@ -26,6 +28,7 @@ public interface UserRepository extends JpaRepository<UserDtls, Integer> {
 			String status);
 
 	public List<UserDtls> findByStatus(String status);
+
 
 	
 	

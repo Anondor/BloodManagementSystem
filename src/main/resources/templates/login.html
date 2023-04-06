@@ -18,9 +18,11 @@
   <div class="card-header text-center fs-4">
    Login Here
   </div>
-  
 						<div th:if="${param.error}" class="alert alert-danger">
-							Invalid username & Password</div>
+						
+							[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]	
+
+							</div>
 
 						<div th:if="${param.logout}" class="alert alert-success">
 							Logout Sucessfully</div>

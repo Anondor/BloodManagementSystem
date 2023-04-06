@@ -3,6 +3,7 @@ package juniv.edu.controller;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import juniv.edu.model.UserDtls;
 import juniv.edu.repository.UserRepository;
@@ -64,8 +66,12 @@ public class HomeController {
 	
 	
 	@PostMapping("/createUser")
-	public String createUser(@ModelAttribute UserDtls user) {
+	public String createUser(@ModelAttribute UserDtls user,HttpServletRequest request) {
 
+		
+		 String url=request.getRequestURI().toString();
+		 url=url.replace(request.getServletPath(), "");
+		 
 		boolean f = userService.checkEmail(user.getEmail());
 		int ok=0;
 		
@@ -76,7 +82,7 @@ public class HomeController {
 		}
 		else
 		{
-			UserDtls userDtls = userService.createUser(user);
+			UserDtls userDtls = userService.createUser(user,url);
 			
 
 			/*if (userDtls != null) {
@@ -100,6 +106,24 @@ public class HomeController {
 
 		
 	}
+	@GetMapping("/verify")
+	public String verifyAccount(@Param("code") String code)
+	{
+		if(userService.verifyAccount(code))
+		{
+			
+			return "login";
+		}
+		else
+		{
+			
+			return "redirect:/register";
+		}
+		
+	}
+	
+	
+	
 	
 	@GetMapping("/loadForgetPassword")
 	
