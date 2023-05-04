@@ -3,7 +3,6 @@ package juniv.edu.controller;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import juniv.edu.model.UserDtls;
 import juniv.edu.repository.UserRepository;
@@ -66,31 +64,26 @@ public class HomeController {
 	
 	
 	@PostMapping("/createUser")
-	public String createUser(@ModelAttribute UserDtls user,HttpServletRequest request) {
+	public String createUser(@ModelAttribute UserDtls user, HttpSession session) {
 
-		
-		 String url=request.getRequestURI().toString();
-		 url=url.replace(request.getServletPath(), "");
-		 
 		boolean f = userService.checkEmail(user.getEmail());
 		int ok=0;
 		
 		if (f) {
-			// session.setAttribute("msg", "Email Id alreday exists");
+			session.setAttribute("msg", "Email Id alreday exists");
 			ok=1;
 			
 		}
 		else
 		{
-			UserDtls userDtls = userService.createUser(user,url);
+			UserDtls userDtls = userService.createUser(user);
 			
 
-			/*if (userDtls != null) {
+			if (userDtls != null) {
 				session.setAttribute("msg", "Register Sucessfully");
 			} else {
 				session.setAttribute("msg", "Something wrong on server");
-			}*/
-			
+			}
 		}
 		if(ok==1)
 		{
@@ -106,24 +99,6 @@ public class HomeController {
 
 		
 	}
-	@GetMapping("/verify")
-	public String verifyAccount(@Param("code") String code)
-	{
-		if(userService.verifyAccount(code))
-		{
-			
-			return "login";
-		}
-		else
-		{
-			
-			return "redirect:/register";
-		}
-		
-	}
-	
-	
-	
 	
 	@GetMapping("/loadForgetPassword")
 	
@@ -141,7 +116,7 @@ public class HomeController {
 	
 	@PostMapping("/forgetPassword")
 	
-	public String forgetPassword(@RequestParam String email, @RequestParam String mobileNum)
+	public String forgetPassword(@RequestParam String email, @RequestParam String mobileNum,HttpSession session)
 	{
 		UserDtls user=userRepo.findByEmailAndUserPhone(email,mobileNum);
 		
@@ -151,7 +126,7 @@ public class HomeController {
 		}
 		else
 		{ 
-		//	session.setAttribute("msg", "Invalid email or mobile number");
+			session.setAttribute("msg", "Invalid email or mobile number");
 			
 			return "forget_password";
 		}

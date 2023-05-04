@@ -62,15 +62,10 @@ public class UserController {
 	{
 		return "user/update_profile";
 	}
-	@GetMapping("/profile")
-	public String loadProfile()
-	{
-		return "user/profile";
-	}
 
 	@PostMapping("/editProfile")
 	
-	public String updateProfile(HttpServletRequest request,Principal p)
+	public String updateProfile(HttpServletRequest request,Principal p, HttpSession session)
 	{
 		String email=p.getName();
 		UserDtls loginUser= userRepo.findByEmail(email);
@@ -101,6 +96,7 @@ public class UserController {
 		
 		
 		userRepo.save(loginUser);
+		session.setAttribute("msg", "Update Sucess");
 		return "redirect:/user/updateProfile";
 	}
 	@GetMapping("/donner")
