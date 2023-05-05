@@ -1,6 +1,7 @@
 package juniv.edu.controller;
 
 import java.security.Principal;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,10 +63,15 @@ public class UserController {
 	{
 		return "user/update_profile";
 	}
+	@GetMapping("/profile")
+	public String loadProfile()
+	{
+		return "user/profile";
+	}
 
 	@PostMapping("/editProfile")
 	
-	public String updateProfile(HttpServletRequest request,Principal p, HttpSession session)
+	public String updateProfile(HttpServletRequest request,Principal p)
 	{
 		String email=p.getName();
 		UserDtls loginUser= userRepo.findByEmail(email);
@@ -96,7 +102,6 @@ public class UserController {
 		
 		
 		userRepo.save(loginUser);
-		session.setAttribute("msg", "Update Sucess");
 		return "redirect:/user/updateProfile";
 	}
 	@GetMapping("/donner")
@@ -113,6 +118,20 @@ public class UserController {
 	
 		if(unioncheck==1) {
 			List<UserDtls>list= service.findByUserUnionAndUserBloodGroupAndStatus(union,userBloodGroup,status);
+			
+			/*
+			  HashMap<Integer, Integer> mp = new HashMap<Integer, Integer>();
+			 
+			  for(UserDtls b:list){  
+		
+				System.out.println(b.getUserName());
+			 }
+			
+			
+			
+			*/
+			
+			
 			return new ModelAndView("user/blood_donner","user_dtls",list);
 		}
 		else if(thanacheck==1)
