@@ -46,11 +46,20 @@ public class UserController {
 	{
 		return "user/home";
 	}
+	
 	@GetMapping("/search")
 	public String search()
 	{
 		return "user/search";
 	}
+	
+	@GetMapping("/invite")
+	public String invite()
+	{
+		return "user/invite_friend";
+		
+	}
+	
 	
 	@GetMapping("/changePassword")
 	public String loadChangePassword()
@@ -67,6 +76,32 @@ public class UserController {
 	public String loadProfile()
 	{
 		return "user/profile";
+	}
+	
+	
+	@PostMapping("/invitetransfer")
+	public String invitetransfer(HttpServletRequest request,Principal p)
+	{
+		String email=p.getName();
+		
+		UserDtls LoginUser=userRepo.findByEmail(email);
+		String friendemail=request.getParameter("frindEmail");
+		LoginUser.setUserfriend(friendemail);
+		
+		
+	/*
+		System.out.println("###############################");
+		
+		System.out.println(email);
+
+		System.out.println(friendemail);
+
+		System.out.println("###############################");
+		
+	*/	
+		
+		userRepo.save(LoginUser);
+		return "redirect:/user/search";
 	}
 
 	@PostMapping("/editProfile")
@@ -207,5 +242,7 @@ public class UserController {
 		
 		return "redirect:/user/changePassword";
 	}
+	
+
 
 }
